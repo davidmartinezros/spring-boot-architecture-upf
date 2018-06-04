@@ -55,6 +55,11 @@ public class DefaultController {
         };
         log.info("*******************************************************");
         
+        
+        // error provocat
+        int a = 5/0;
+        // -->
+        
         return new ModelAndView("inici");
  
     }
