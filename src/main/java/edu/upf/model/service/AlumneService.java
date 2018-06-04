@@ -7,5 +7,7 @@ import edu.upf.model.model.Alumne;
 public interface AlumneService {
      
     public Alumne cercarAlumnePerId(Long idAlumne);
+    
+    public List<Alumne> cercarAlumnesPerNomiCognom(String primerCognom, String segonCognom);
  
 }

@@ -26,5 +26,10 @@ public class AlumneServiceImpl implements AlumneService {
         Alumne alumne = alumneRepository.findOneByIdAlumne(idAlumne);
         return alumne;
     }
+    
+    public List<Alumne> cercarAlumnesPerNomiCognom(String primerCognom, String segonCognom) {
+    	List<Alumne> list = alumneRepository.findByPrimerCognomAndSegonCognomAllIgnoreCaseOrderByPrimerCognom(primerCognom, segonCognom);
+    	return list;
+    }
  
 }

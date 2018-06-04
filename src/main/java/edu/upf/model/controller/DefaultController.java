@@ -1,5 +1,7 @@
 package edu.upf.model.controller;
  
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -30,13 +32,22 @@ public class DefaultController {
          * Per provar que funciona la connexió a la base de dades, fem unes queries i imprimim resultat per consola
          *
          */
-        Alumne oAlumne = alumneService.cercarAlumnePerId(new Long("61"));
+    	Alumne oAlumne = alumneService.cercarAlumnePerId(new Long("61"));
         log.info("*********************** PROVA *************************");
         if(oAlumne != null) {
             log.info("Prova connexió a base de dades i query: alumne = " + oAlumne.getNomComplet());
         };
         log.info("*******************************************************");
-         
+        
+        List<Alumne> listAlumne = alumneService.cercarAlumnesPerNomiCognom("Çelik", "Ahlström");
+        log.info("*********************** PROVA 2 *************************");
+        if(listAlumne != null) {
+        	for(Alumne alumne: listAlumne) {
+        		log.info("Prova connexió a base de dades i query: alumne = " + alumne.getNomComplet());        		
+        	}
+        };
+        log.info("*******************************************************");
+        
         return new ModelAndView("inici");
  
     }
