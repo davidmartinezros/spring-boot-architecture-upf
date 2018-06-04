@@ -9,5 +9,7 @@ public interface AlumneService {
     public Alumne cercarAlumnePerId(Long idAlumne);
     
     public List<Alumne> cercarAlumnesPerNomiCognom(String primerCognom, String segonCognom);
+    
+    public Alumne cercarAlumnePerDni(String dni);
  
 }

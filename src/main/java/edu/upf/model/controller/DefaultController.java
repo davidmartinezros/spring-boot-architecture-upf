@@ -48,6 +48,13 @@ public class DefaultController {
         };
         log.info("*******************************************************");
         
+        Alumne oAlumneDni = alumneService.cercarAlumnePerDni("87654321");
+        log.info("*********************** PROVA *************************");
+        if(oAlumneDni != null) {
+            log.info("Prova connexió a base de dades i query: alumne = " + oAlumneDni.getNomComplet());
+        };
+        log.info("*******************************************************");
+        
         return new ModelAndView("inici");
  
     }
