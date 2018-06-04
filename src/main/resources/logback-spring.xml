@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+ 
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+         
+        <!-- Weblogic PRE o PRO -->
+        <file>/sx/logs/weblogic/${weblogic.Name}/model.log</file>
+             
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover & compress -->
+            <FileNamePattern>/sx/logs/weblogic/${weblogic.Name}/model.%d.gz</FileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+     
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date %level %logger{10} [%file:%line] %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+     
+    <!-- Hibernate -->
+    <logger name="org.hibernate.SQL">
+        <level value="ERROR" />
+    </logger>
+     
+    <logger name="org.hibernate.type">
+        <springProfile name="DES">
+            <!-- Així ens mostra els paràmetres -->
+            <level value="TRACE" />
+        </springProfile>
+        <springProfile name="!DES">
+            <level value="ERROR" />
+        </springProfile>
+    </logger>
+     
+    <logger name="org.hibernate.hql">
+        <level value="ERROR" />
+    </logger>
+ 
+    <logger name="org.thymeleaf">
+        <level value="INFO" />
+    </logger>
+ 
+    <logger name="org">
+        <level value="INFO" />
+    </logger>
+         
+    <logger name="edu.upf.model" additivity="false">
+        <springProfile name="DES, INT">
+            <level value="DEBUG" />
+        </springProfile>
+        <springProfile name="PRO">
+            <level value="INFO" />
+        </springProfile>
+        <springProfile name="DES">
+            <appender-ref ref="STDOUT"/>
+        </springProfile>
+        <springProfile name="INT, PRO">
+            <appender-ref ref="FILE"/>
+        </springProfile>
+    </logger>
+  
+    <root level="info">
+        <springProfile name="DES">
+            <appender-ref ref="STDOUT"/>
+        </springProfile>
+        <springProfile name="INT, PRO">
+            <appender-ref ref="FILE"/>
+        </springProfile>
+    </root>
+     
+</configuration>
