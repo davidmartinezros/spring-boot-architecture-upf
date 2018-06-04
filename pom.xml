@@ -54,7 +54,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -70,6 +74,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- Base de dades -->
+		<dependency>
+		    <groupId>com.oracle</groupId>
+		    <artifactId>ojdbc6</artifactId>
+		    <version>11.2.0.2.0</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

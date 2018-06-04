@@ -1,3 +1,15 @@
 server:
   port: 8080
-  servlet.contextPath: /model 
+  servlet.contextPath: /model
+
+# Utilitzem Tomcat (SpringBoot) i ens connectem a la bdd de manera directa.
+oracle:
+    driverClassName: oracle.jdbc.OracleDriver
+    databaseUrl: jdbc:oracle:thin:@crsintscan-vip.s.upf.edu:1521/INTUTF
+    username: desmodel
+    password: mdl12
+    dataSourceName: xxx
+ 
+hibernate:
+    showSql: true
+    dialect: org.hibernate.dialect.Oracle10gDialect

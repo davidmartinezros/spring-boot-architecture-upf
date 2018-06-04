@@ -1,2 +1,14 @@
 server:
   servlet.contextPath: /model
+  
+# Utilitzem WebLogic i ens connectem a la bdd via datasource definit al servidor
+oracle:
+    driverClassName: xxx
+    databaseUrl: xxx
+    username: xxx
+    password: xxx
+    dataSourceName: jdbc/MODEL
+ 
+hibernate:
+    showSql: true
+    dialect: org.hibernate.dialect.Oracle10gDialect
