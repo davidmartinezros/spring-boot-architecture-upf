@@ -57,8 +57,8 @@ public class Usuari {
                 CascadeType.MERGE
             })
     @JoinTable(name = "MODEL_USUARI_ROL",
-            joinColumns = { @JoinColumn(name = "nis") },
-            inverseJoinColumns = { @JoinColumn(name = "idrol") })
+            joinColumns = { @JoinColumn(name = "NIS") },
+            inverseJoinColumns = { @JoinColumn(name = "IDROL") })
     private Set<Rol> rols = new HashSet<>();
     
 }
