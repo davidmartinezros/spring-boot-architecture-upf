@@ -12,3 +12,9 @@ oracle:
 hibernate:
     showSql: true
     dialect: org.hibernate.dialect.Oracle10gDialect
+    
+cas:
+    loginUrl: https://presso.upf.edu/CAS/index.php/login
+    validateUrl: xxx
+    returnUrl: https://presso.upf.edu/CAS/index.php
+    logoutUrl: https://presso.upf.edu/CAS/index.php/logout

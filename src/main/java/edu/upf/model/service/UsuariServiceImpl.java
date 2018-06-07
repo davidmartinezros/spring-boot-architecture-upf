@@ -20,7 +20,7 @@ public class UsuariServiceImpl implements UsuariService {
     @Autowired
     UsuariRepository usuariRepository; 
      
-    public Usuari cercarUsuariPerNis(Long nis) {   
+    public Usuari cercarUsuariPerNis(Integer nis) {   
         Usuari usuari = usuariRepository.findOneByNis(nis);
         return usuari;
     }

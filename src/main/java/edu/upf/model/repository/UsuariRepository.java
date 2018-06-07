@@ -17,7 +17,7 @@ import edu.upf.model.model.Usuari;
  *
  */
 @Repository
-public interface UsuariRepository extends JpaRepository<Usuari, Long> {
+public interface UsuariRepository extends JpaRepository<Usuari, Integer> {
      
     /**
      * Query generada per Spring Data
@@ -25,6 +25,6 @@ public interface UsuariRepository extends JpaRepository<Usuari, Long> {
      * @return
      */
     @Transactional(readOnly = true)
-    public Usuari findOneByNis(@Param("nis") Long nis);
+    public Usuari findOneByNis(@Param("nis") Integer nis);
     
 }

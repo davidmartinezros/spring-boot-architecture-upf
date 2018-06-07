@@ -27,7 +27,7 @@ public class Usuari {
 
 	@Id
     @Column(name = "NIS")
-    private Long nis;
+    private Integer nis;
      
     @Column(name = "NOMCOMPLET")
     private String nomComplet;

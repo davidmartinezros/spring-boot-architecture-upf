@@ -4,6 +4,6 @@ import edu.upf.model.model.Usuari;
  
 public interface UsuariService {
      
-    public Usuari cercarUsuariPerNis(Long nis);
+    public Usuari cercarUsuariPerNis(Integer nis);
     
 }
