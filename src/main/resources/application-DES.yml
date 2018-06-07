@@ -19,3 +19,12 @@ cas:
     validateUrl: http://localhost:8080/model/login/cas
     returnUrl: https://presso.upf.edu/CAS/index.php
     logoutUrl: https://presso.upf.edu/CAS/index.php/logout
+    
+spring:
+    thymeleaf.cache: false
+    thymeleaf.check-template: true
+    thymeleaf.check-template-location: true
+    thymeleaf.content-type: text/html
+    thymeleaf.enabled: true
+    thymeleaf.encoding: UTF-8
+    
