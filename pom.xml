@@ -98,6 +98,12 @@
 		    <artifactId>spring-security-cas</artifactId>
 		</dependency>
 		
+		<!-- Layouts Tymeleaf -->
+		<dependency>
+		  <groupId>nz.net.ultraq.thymeleaf</groupId>
+		  <artifactId>thymeleaf-layout-dialect</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+    <meta charset="UTF-8">
+</head>
+ 
+<body>
+    <div th:fragment="header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary" >
+            <a class="navbar-brand" data-th-href="@{/}" data-th-text="#{global.app.title}"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarsAppModel" aria-controls="navbarsAppModel"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+     
+            <div class="collapse navbar-collapse" id="navbarsAppModel">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" data-th-text="#{menu.opcio1}"></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" data-th-text="#{menu.opcio2}"></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#"
+                        id="dropdownAlumne" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" data-th-text="#{menu.opcio3}"></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownAlumne">
+                            <a class="dropdown-item" data-th-href="@{/alumne/llista}" data-th-text="#{menu.opcio4}"></a>
+                            <a class="dropdown-item" data-th-href="@{/alumne/iniciCerca}" data-th-text="#{menu.opcio5}"></a>
+                            <a class="dropdown-item" href="#" data-th-text="#{menu.opcio6}"></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+             
+            <div class="navbar-var pull-right">
+                <a data-th-href="@{/logout}" style="color:white">
+                    <span class="oi oi-account-logout" title="account-logout" aria-hidden="true"></span>
+ 
+                </a>
+            </div>
+        </nav>
+    </div>
+</body>
+ 
+</html>
