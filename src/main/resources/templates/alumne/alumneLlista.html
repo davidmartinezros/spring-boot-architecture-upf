@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+ 
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+ 
+ 
+<body>
+     
+    <div layout:fragment="content">
+     
+    <div class="container-fluid mt-3">
+     
+        <div class="card">
+            <h5 class="card-header" data-th-text="#{alumne.llista}"></h5>
+            <div class="card-body">
+     
+                <form id="formAlumneLlista"  data-th-action="@{/alumne}"  data-th-object="${alumneLlistaForm}" data-th method="post" >
+                    <input type="hidden" value="GET" name="_method" id="_method"/>
+                     
+                    <div class="col-md-11 mx-auto mt-3" >
+                        <table class="table table-striped table-sm">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th data-th-text="#{alumne.nom}"></th>
+                                    <th data-th-text="#{alumne.cognom1}"></th>
+                                    <th data-th-text="#{alumne.cognom2}"></th>
+                                    <th data-th-text="#{alumne.dni}"></th>
+                                    <th data-th-text="#{alumne.dataNaix}"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-th-each="alumne : ${alumneLlistaForm.alumnes}" data-th-attr="data-idAlumne=${alumne.idAlumne}">
+                                    <td data-th-text="${alumne.nom}"></td>
+                                    <td data-th-text="${alumne.primerCognom}"></td>
+                                    <td data-th-text="${alumne.segonCognom}"></td>
+                                    <td data-th-text="${alumne.dni}"></td>
+                                    <td data-th-text="${#dates.format(alumne.dataNaixement, 'dd/MMM/yyyy')}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                 
+                </form>
+                 
+            </div>
+        </div>
+         
+    </div>
+    
+    </div>
+         
+</body>
+</html>

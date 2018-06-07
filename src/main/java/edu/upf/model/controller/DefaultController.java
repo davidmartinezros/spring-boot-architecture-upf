@@ -45,7 +45,7 @@ public class DefaultController {
         };
         log.info("*******************************************************");
         
-        List<Alumne> listAlumne = alumneService.cercarAlumnesPerNomiCognom("Çelik", "Ahlström");
+        List<Alumne> listAlumne = alumneService.cercarAlumnesPerCognoms("Çelik", "Ahlström");
         log.info("*********************** PROVA 2 *************************");
         if(listAlumne != null) {
         	for(Alumne alumne: listAlumne) {
