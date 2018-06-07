@@ -4,6 +4,6 @@ import edu.upf.model.model.Rol;
  
 public interface RolService {
      
-    public Rol cercarRolPerId(Long idRol);
+    public Rol cercarRolPerId(String idRol);
     
 }

@@ -25,7 +25,7 @@ public class Rol {
 
 	@Id
     @Column(name = "IDROL")
-    private Long idRol;
+    private String idRol;
      
     @Column(name = "MEMO")
     private String memo;

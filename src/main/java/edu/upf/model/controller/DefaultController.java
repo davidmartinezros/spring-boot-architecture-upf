@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.upf.model.model.Alumne;
+import edu.upf.model.model.Rol;
+import edu.upf.model.model.Usuari;
 import edu.upf.model.service.AlumneService;
+import edu.upf.model.service.RolService;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -24,7 +27,10 @@ public class DefaultController {
 	
 	@Autowired
     private AlumneService alumneService;
-     
+    
+	@Autowired
+    private RolService rolService;
+	
     @RequestMapping()
     public ModelAndView inici() {
     	
@@ -49,15 +55,24 @@ public class DefaultController {
         log.info("*******************************************************");
         
         Alumne oAlumneDni = alumneService.cercarAlumnePerDni("87654321");
-        log.info("*********************** PROVA *************************");
+        log.info("*********************** PROVA 3 *************************");
         if(oAlumneDni != null) {
             log.info("Prova connexió a base de dades i query: alumne = " + oAlumneDni.getNomComplet());
         };
         log.info("*******************************************************");
         
-        
+        Rol rol = rolService.cercarRolPerId("ROL_TEST");
+        log.info("*********************** PROVA 4 *************************");
+        if(rol != null) {
+        	if(rol.getUsuaris() != null && rol.getUsuaris().size() > 0) {
+        		for(Usuari usuari: rol.getUsuaris()) {
+        			log.info("Prova connexió a base de dades i query: usuari = " + usuari.getNomComplet());
+        		}
+        	}
+        }
+        log.info("*******************************************************");	
         // error provocat
-        int a = 5/0;
+        //int a = 5/0;
         // -->
         
         return new ModelAndView("inici");

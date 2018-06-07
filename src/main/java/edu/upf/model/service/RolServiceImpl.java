@@ -20,7 +20,7 @@ public class RolServiceImpl implements RolService {
     @Autowired
     RolRepository rolRepository; 
      
-    public Rol cercarRolPerId(Long idRol) {   
+    public Rol cercarRolPerId(String idRol) {   
         Rol rol = rolRepository.findOneByIdRol(idRol);
         return rol;
     }

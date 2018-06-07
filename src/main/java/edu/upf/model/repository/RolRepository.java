@@ -17,14 +17,14 @@ import edu.upf.model.model.Rol;
  *
  */
 @Repository
-public interface RolRepository extends JpaRepository<Rol, Long> {
+public interface RolRepository extends JpaRepository<Rol, String> {
      
     /**
      * Query generada per Spring Data
-     * @param idAlumne
+     * @param idString
      * @return
      */
     @Transactional(readOnly = true)
-    public Rol findOneByIdRol(@Param("idRol") Long idRol);
+    public Rol findOneByIdRol(@Param("idRol") String idRol);
     
 }
