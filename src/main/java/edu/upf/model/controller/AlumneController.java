@@ -1,9 +1,12 @@
 package edu.upf.model.controller;
  
 import java.util.List;
- 
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
  
@@ -38,11 +41,15 @@ public class AlumneController {
  
  
     @RequestMapping("/cerca")
-    public final ModelAndView resultat(AlumneCercaForm  alumneCercaForm) throws Exception {
+    public final ModelAndView resultat(@Valid AlumneCercaForm  alumneCercaForm, BindingResult bindingResult) throws Exception {
  
         log.debug("VALORS DE LA CERCA");
         log.debug("Cognoms: " + alumneCercaForm.getCognom1() + " " + alumneCercaForm.getCognom2());
         log.debug("DNI: " + alumneCercaForm.getDni());
+        
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView(AlumneEnum.CERCA.getView(), ALUMNE_CERCA_FORM, alumneCercaForm);
+        }
  
         List<Alumne> alumnes = alumneService.cercarAlumnesPerCognoms(alumneCercaForm.getCognom1(), alumneCercaForm.getCognom2());
         Alumne alumne = alumneService.cercarAlumnePerDni(alumneCercaForm.getDni());
