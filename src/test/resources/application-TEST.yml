@@ -1,0 +1,21 @@
+# Fitxer de properties per TEST
+# Utilitzem la bdd H2 en memòria
+# Alguns properties no els fem servir xo cal posar-los pq no doni error, posem xxx.
+# Els de CAS cal que comencin per http(s):// o /
+ 
+oracle:
+    driverClassName: oracle.jdbc.OracleDriver
+    databaseUrl: jdbc:oracle:thin:@crsintscan-vip.s.upf.edu:1521/INTUTF
+    username: desmodel
+    password: mdl12
+    dataSourceName: xxx
+ 
+hibernate:
+    showSql: true
+    dialect: org.hibernate.dialect.Oracle10gDialect
+    
+cas:
+    loginUrl: https://presso.upf.edu/CAS/index.php/login
+    validateUrl: http://localhost:8080/model/login/cas
+    returnUrl: https://presso.upf.edu/CAS/index.php
+    logoutUrl: https://presso.upf.edu/CAS/index.php/logout

@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.cas.authentication.CasAssertionAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
  
 @Service
 @Slf4j
-public class CasUserDetailsService implements AuthenticationUserDetailsService<CasAssertionAuthenticationToken> {
+public class CasUserDetailsService implements AuthenticationUserDetailsService<CasAssertionAuthenticationToken>, UserDetailsService {
  
     @Autowired
     private UsuariService usuariService;
@@ -117,6 +119,44 @@ public class CasUserDetailsService implements AuthenticationUserDetailsService<C
  
         return userDetailsImpl;
  
+    }
+    
+    /**
+    * Per testing
+    * @param username
+    * @return
+    * @throws UsernameNotFoundException
+    */
+    @Profile(value = "TEST")
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+             
+       return this.ompleUserDetailsImplProves(username,  "Marta Morales Vivó", "ROL_TEST", "ca");
+     
+    }
+     
+    /**
+    * Omple un objecte UserDetailsImpl amb tot el necessari per poder fer tests
+    *
+    * @param idUsuari
+    * @param nomComplet
+    * @param idRolUsuari
+    * @param idIdioma
+    */
+    @Profile(value = "TEST")
+    public UserDetailsImpl ompleUserDetailsImplProves(String nisUsuari,
+            String nomComplet, String idRolUsuari, String idIdioma) {
+         
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+        grantedAuthorities.add(new SimpleGrantedAuthority(idRolUsuari));
+         
+        Usuari usuari = usuariService.cercarUsuariPerNis(new Integer(nisUsuari));
+     
+        Rol oRol = rolService.cercarRolPerId(idRolUsuari);
+                 
+        UserDetailsImpl oUserDetailsImpl = new UserDetailsImpl(nisUsuari,
+                grantedAuthorities, usuari.getNomComplet(), idRolUsuari, oRol.getMemo(), idIdioma);
+     
+        return oUserDetailsImpl;
     }
  
 }

@@ -38,6 +38,7 @@ public class DefaultController {
          * Per provar que funciona la connexió a la base de dades, fem unes queries i imprimim resultat per consola
          *
          */
+    	/*
     	Alumne oAlumne = alumneService.cercarAlumnePerId(new Long("61"));
         log.info("*********************** PROVA *************************");
         if(oAlumne != null) {
@@ -70,7 +71,8 @@ public class DefaultController {
         		}
         	}
         }
-        log.info("*******************************************************");	
+        log.info("*******************************************************");
+        */
         // error provocat
         //int a = 5/0;
         // -->
